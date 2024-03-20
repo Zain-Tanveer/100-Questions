@@ -1,5 +1,6 @@
 const isLeapYear = (year) => {
-  const isLeap = year % 4 === 0 ? true : false;
+  const isLeap =
+    (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0 ? true : false;
 
   if (isLeap) {
     console.log(`${year} is a leap year!`);
