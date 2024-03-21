@@ -1,13 +1,14 @@
-const scriptInString = (s) => {
-  if (s.startsWith("Script", 4)) {
-    return `${s.slice(0, 4)}${s.slice(10, s.length)}`;
+const addFirstCharacter = (s) => {
+  if (s.length < 1) {
+    return "Insufficient string length.";
   }
 
-  return s;
+  const charFirst = s.charAt(0);
+
+  return `${charFirst}${s}${charFirst}`;
 };
 
-console.log(scriptInString("JavaScript Questions"));
-console.log(scriptInString("Javascript Questions"));
+console.log(`New String : ${addFirstCharacter("java")}`);
 
 // copy the content and paste it in index.js
 // do 'node index.js' in terminal
