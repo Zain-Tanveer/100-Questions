@@ -1,13 +1,16 @@
-const scriptInString = (s) => {
-  if (s.startsWith("Script", 4)) {
-    return `${s.slice(0, 4)}${s.slice(10, s.length)}`;
+const largestNumber = (first, second) => {
+  if (first < 40 || first > 60 || second < 40 || second > 60) {
+    return "Numbers are not in range of 40...60.";
   }
 
-  return s;
+  return first > second
+    ? `Largest Number : ${first}`
+    : `Largest Number : ${second}`;
 };
 
-console.log(scriptInString("JavaScript Questions"));
-console.log(scriptInString("Javascript Questions"));
+console.log(largestNumber(20, 30));
+console.log(largestNumber(42, 51));
+console.log(largestNumber(78, 99));
 
 // copy the content and paste it in index.js
 // do 'node index.js' in terminal
