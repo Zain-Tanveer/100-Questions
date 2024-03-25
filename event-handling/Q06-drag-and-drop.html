@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handling</title>
+  </head>
+  <style>
+    #sortable-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #sortable-list li {
+      background-color: #f4f4f4;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      cursor: move;
+    }
+
+    #sortable-list li:hover {
+      background-color: #ddd;
+    }
+  </style>
+  <body>
+    <h1>Event Handling</h1>
+    <div class="container" id="main-container">
+      <ul id="sortable-list">
+        <li draggable="true">Item 1</li>
+        <li draggable="true">Item 2</li>
+        <li draggable="true">Item 3</li>
+        <li draggable="true">Item 4</li>
+        <li draggable="true">Item 5</li>
+      </ul>
+    </div>
+
+    <script>
+      let dragSrcEl = null;
+
+      function handleDragStart(event) {
+        dragSrcEl = event.target;
+        event.dataTransfer.effectAllowed = "move";
+        event.dataTransfer.setData("text/html", event.target.innerHTML);
+      }
+
+      function handleDragOver(event) {
+        if (event.preventDefault) {
+          event.preventDefault();
+        }
+        event.dataTransfer.dropEffect = "move";
+        return false;
+      }
+
+      function handleDrop(event) {
+        if (event.stopPropagation) {
+          event.stopPropagation();
+        }
+        if (dragSrcEl != event.target) {
+          dragSrcEl.innerHTML = event.target.innerHTML;
+          event.target.innerHTML = event.dataTransfer.getData("text/html");
+        }
+        return false;
+      }
+
+      function handleDragEnd(event) {
+        let items = document.querySelectorAll("#sortable-list li");
+        items.forEach(function (item) {
+          item.classList.remove("over");
+        });
+      }
+
+      let items = document.querySelectorAll("#sortable-list li");
+      items.forEach(function (item) {
+        item.addEventListener("dragstart", handleDragStart);
+        item.addEventListener("dragover", handleDragOver);
+        item.addEventListener("drop", handleDrop);
+        item.addEventListener("dragend", handleDragEnd);
+      });
+    </script>
+  </body>
+</html>
+
+<!-- Copy the content to index.html for better ease -->

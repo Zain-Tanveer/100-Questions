@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handling</title>
+  </head>
+  <style>
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-button {
+      padding: 0.5rem 1.25rem;
+      border: none;
+      background-color: rgb(70, 181, 70);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .dropdown-button:hover {
+      background-color: rgba(70, 181, 70, 0.84);
+    }
+
+    .dropdown-options {
+      position: absolute;
+      border: solid 1px rgb(217, 217, 217);
+      width: fit-content;
+      padding: 0;
+      margin-top: 0;
+    }
+
+    .dropdown-option {
+      list-style: none;
+      padding: 0.5rem 1.25rem;
+      border-bottom: solid 1px rgb(217, 217, 217);
+      cursor: pointer;
+    }
+
+    .dropdown-option:last-child {
+      border: none;
+    }
+
+    .dropdown-option:hover {
+      color: rgb(42, 42, 42);
+      background-color: rgb(192, 192, 192);
+    }
+  </style>
+  <body>
+    <h1>Event Handling</h1>
+    <div class="container" id="main-container"></div>
+
+    <script>
+      // variables
+      const containerEl = document.getElementById("main-container");
+
+      // creating a dropdown div
+      const dropdownEl = document.createElement("div");
+      dropdownEl.setAttribute("class", "dropdown");
+
+      // creating a dropdown button element
+      const dropdownButtonEl = document.createElement("button");
+      dropdownButtonEl.textContent = "Options";
+      dropdownButtonEl.setAttribute("class", "dropdown-button");
+      dropdownEl.appendChild(dropdownButtonEl);
+
+      // creating dropdown options
+      const dropdownOptionsEl = document.createElement("ul");
+      dropdownOptionsEl.setAttribute("class", "dropdown-options");
+      dropdownOptionsEl.style.display = "none";
+      dropdownEl.appendChild(dropdownOptionsEl);
+
+      const dropdownItems = ["Apple", "Orange", "Banana"];
+
+      // adding dropdown options
+      dropdownItems.forEach((item) => {
+        const option = document.createElement("li");
+        option.textContent = item;
+        option.setAttribute("class", "dropdown-option");
+
+        dropdownOptionsEl.appendChild(option);
+      });
+
+      containerEl.appendChild(dropdownEl);
+
+      // event listeners
+      dropdownButtonEl.addEventListener("click", () => {
+        if (dropdownOptionsEl.style.display === "none") {
+          dropdownOptionsEl.style.display = "block";
+        } else {
+          dropdownOptionsEl.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<!-- Copy the content to index.html for better ease -->

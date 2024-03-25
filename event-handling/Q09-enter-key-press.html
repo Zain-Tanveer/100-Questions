@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handling</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+
+      button {
+        width: fit-content;
+        margin-top: 1rem;
+        padding: 0.625rem 2rem;
+        background-color: #af4cab;
+        border: 0;
+        color: white;
+        font-weight: bold;
+        border-radius: 100vmax;
+        cursor: pointer;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+      }
+
+      form button {
+        align-self: center;
+        margin-top: 0.5rem;
+        padding-block: 0.5rem;
+      }
+
+      #tasks {
+        font-size: 1.25rem;
+        padding: 0.25rem;
+        border: solid 1px black;
+        border-radius: 0.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Event Handling</h1>
+    <div class="container" id="main-container">
+      <form action="#" id="task-form">
+        <label for="tasks">How many tasks?</label>
+        <input type="text" id="tasks" name="tasks" autocomplete="off" />
+        <button type="submit">Submit</button>
+      </form>
+      <p class="success-message">Enter key pressed!</p>
+    </div>
+
+    <script>
+      const taskForm = document.getElementById("task-form");
+      const tasksEl = document.getElementById("tasks");
+      const successMessage = document.querySelector(".success-message");
+
+      successMessage.style.display = "none";
+
+      tasksEl.addEventListener("keydown", (e) => {
+        if (event.key === "Enter") {
+          e.preventDefault();
+          successMessage.style.display = "initial";
+        } else {
+          successMessage.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<!-- Copy the content to index.html for better ease -->

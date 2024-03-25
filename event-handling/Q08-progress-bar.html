@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handling</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+
+      button {
+        width: fit-content;
+        margin-top: 1rem;
+        padding: 0.625rem 2rem;
+        background-color: #af4cab;
+        border: 0;
+        color: white;
+        font-weight: bold;
+        border-radius: 100vmax;
+        cursor: pointer;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+      }
+
+      form button {
+        align-self: center;
+        margin-top: 0.5rem;
+        padding-block: 0.5rem;
+      }
+
+      #tasks {
+        font-size: 1.25rem;
+        padding: 0.25rem;
+        border: solid 1px black;
+        border-radius: 0.25rem;
+      }
+
+      #progress-bar-container {
+        width: 100%;
+        height: 30px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        overflow: hidden;
+      }
+
+      #progress-bar {
+        width: 0%;
+        height: 100%;
+        background-color: #4caf50;
+        transition: width 0.2s ease-in-out;
+      }
+
+      .progress-button span {
+        margin-left: 0.5rem;
+        font-weight: bolder;
+      }
+
+      .error {
+        margin-block: 0.75rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        font-weight: bold;
+        background-color: #c74d48;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Daily Tasks</h1>
+    <div class="container" id="main-container">
+      <form action="#" id="task-form">
+        <label for="tasks">How many tasks?</label>
+        <input type="text" id="tasks" name="tasks" />
+        <button type="submit">Submit</button>
+        <div class="error">Error</div>
+      </form>
+
+      <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+      </div>
+
+      <button class="progress-button" onclick="startProgress()">
+        Task Completed <span>+</span>
+      </button>
+    </div>
+
+    <script>
+      const progressBar = document.getElementById("progress-bar");
+      const tasksEl = document.getElementById("tasks");
+      const taskForm = document.getElementById("task-form");
+      const errorDiv = document.querySelector(".error");
+
+      errorDiv.style.display = "none";
+      let tasks = -1;
+
+      taskForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!tasksEl.value || tasksEl.value < 0) {
+          errorDiv.style.display = "block";
+          errorDiv.innerHTML = "Tasks should be more then 1!";
+        } else {
+          errorDiv.style.display = "none";
+          tasks = tasksEl.value;
+          tasksEl.value = "";
+        }
+      });
+
+      function startProgress() {
+        if (tasks < 1) {
+          errorDiv.style.display = "block";
+          errorDiv.innerHTML = "Tasks should be more then 1!";
+          return;
+        }
+
+        let width = parseFloat(progressBar.style.width) || 0; // Get the current width
+        let increment = Math.floor(100 / tasks); // Change the increment as needed
+        let targetWidth = width + increment;
+
+        let interval = setInterval(frame, 25); // Adjust the interval as needed
+
+        function frame() {
+          if (width >= 100 || width >= targetWidth) {
+            // Stop when reaching 100% or target width
+            clearInterval(interval);
+          } else {
+            width++;
+            progressBar.style.width = width + "%";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
+
+<!-- Copy the content to index.html for better ease -->

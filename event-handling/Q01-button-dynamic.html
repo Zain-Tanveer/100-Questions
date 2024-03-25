@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handling</title>
+  </head>
+  <body>
+    <h1>Event Handling</h1>
+    <div class="container" id="main-container"></div>
+
+    <script>
+      // variables
+      const containerEl = document.getElementById("main-container");
+
+      // creating a button
+      const buttonEl = document.createElement("button");
+
+      buttonEl.textContent = "Click Me";
+      containerEl.appendChild(buttonEl);
+
+      // event listeners
+      buttonEl.addEventListener("click", () => {
+        alert("Message displayed using a dynamically created button!");
+      });
+    </script>
+  </body>
+</html>
+
+<!-- Copy the content to index.html for better ease -->

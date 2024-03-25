@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handling</title>
+  </head>
+  <style>
+    .slideshow-image {
+      display: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+    .slideshow {
+      position: relative;
+      width: 80vw;
+      padding-inline: 2rem;
+    }
+
+    .prev,
+    .next {
+      font-size: 1.5rem;
+      position: absolute;
+      height: fit-content;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+
+    .prev:hover,
+    .next:hover {
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .prev {
+      left: 0;
+    }
+    .next {
+      right: 0;
+    }
+  </style>
+  <body>
+    <h1>Event Handling</h1>
+    <div class="container" id="main-container">
+      <div class="slideshow">
+        <div class="slideshow-image">
+          <img src="./images/code-on-phone.jpg" alt="code on phone" />
+        </div>
+        <div class="slideshow-image">
+          <img src="./images/laptop.jpg" alt="laptop" />
+        </div>
+        <div class="slideshow-image">
+          <img src="./images/monitor.jpg" alt="monitor" />
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+    </div>
+
+    <script>
+      let slideIndex = 1;
+
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function showSlides(n) {
+        let i;
+
+        const slides = document.getElementsByClassName("slideshow-image");
+
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+      }
+    </script>
+  </body>
+</html>
+
+<!-- Copy the content to index.html for better ease -->

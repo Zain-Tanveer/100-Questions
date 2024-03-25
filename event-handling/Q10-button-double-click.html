@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handling</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+
+      button {
+        width: fit-content;
+        margin-top: 1rem;
+        padding: 0.625rem 2rem;
+        background-color: #af4cab;
+        border: 0;
+        color: white;
+        font-weight: bold;
+        border-radius: 100vmax;
+        cursor: pointer;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Event Handling</h1>
+    <div class="container" id="main-container">
+      <button id="double-click">Double Click Me!</button>
+      <p class="success-message">Button double clicked!</p>
+    </div>
+
+    <script>
+      const buttonEl = document.getElementById("double-click");
+      const successMessage = document.querySelector(".success-message");
+
+      successMessage.style.display = "none";
+
+      buttonEl.addEventListener("dblclick", () => {
+        successMessage.style.display = "initial";
+      });
+    </script>
+  </body>
+</html>
+
+<!-- Copy the content to index.html for better ease -->

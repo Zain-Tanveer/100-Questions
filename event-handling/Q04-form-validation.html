@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handling</title>
+  </head>
+  <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      /* align-items: center; */
+      gap: 0.75rem;
+      width: fit-content;
+    }
+    .form-control {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    button {
+      width: max-content;
+      margin: auto;
+      padding: 0.35rem 2rem;
+      border-radius: 100vmax;
+      font-weight: bold;
+      border: solid 1px;
+      cursor: pointer;
+    }
+
+    .error {
+      background-color: rgb(249, 50, 15);
+      color: white;
+      padding-inline: 1rem;
+      padding-block: 0.5rem;
+      text-align: center;
+      display: none;
+    }
+  </style>
+  <body>
+    <h1>Event Handling</h1>
+    <div class="container" id="main-container">
+      <form action="#" id="user-form" method="post">
+        <div class="form-control">
+          <label for="email">email*</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="example@gmail.com"
+          />
+        </div>
+        <div class="form-control">
+          <label for="password">Password*</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="*****"
+          />
+        </div>
+        <div class="error">error div</div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <script>
+      const formEl = document.getElementById("user-form");
+      const errorDiv = document.querySelector(".error");
+
+      formEl.addEventListener("submit", (e) => {
+        e.preventDefault();
+        errorDiv.style.display = "none";
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        console.log(email, password);
+
+        if (email.length === 0) {
+          errorDiv.innerHTML = "Please provide an email!";
+          errorDiv.style.display = "block";
+        } else if (password.length < 6) {
+          errorDiv.innerHTML = "Invalid password length!";
+          errorDiv.style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<!-- Copy the content to index.html for better ease -->
