@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>JS DOM paragraph style</title>
+  </head>
+  <body>
+    <p id="text">JavaScript Exercises - w3resource</p>
+    <div>
+      <button id="jsstyle" onclick="js_style()">Style</button>
+    </div>
+  </body>
+
+  <script>
+    const js_style = () => {
+      const paraEl = document.getElementById("text");
+      paraEl.style.backgroundColor = "skyblue";
+    };
+  </script>
+</html>
+
+<!-- Copy the content to index.html for better ease -->

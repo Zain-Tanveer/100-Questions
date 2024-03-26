@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <p>
+      <a
+        id="w3r"
+        type="text/html"
+        hreflang="en-us"
+        rel="nofollow"
+        target="_self"
+        href="https://www.w3resource.com/"
+        >w3resource</a
+      >
+    </p>
+    <button onclick="getAttributes()">
+      Click here to get attributes value
+    </button>
+
+    <script>
+      const getAttributes = () => {
+        const anchorEl = document.getElementById("w3r");
+
+        const anchorHref = anchorEl.getAttribute("href");
+        console.log("href :", anchorHref);
+
+        const anchorHreflang = anchorEl.getAttribute("hreflang");
+        console.log("hreflang :", anchorHreflang);
+
+        const anchorRel = anchorEl.getAttribute("rel");
+        console.log("rel :", anchorRel);
+
+        const anchorTarget = anchorEl.getAttribute("target");
+        console.log("target :", anchorTarget);
+
+        const anchorType = anchorEl.getAttribute("type");
+        console.log("type :", anchorType);
+      };
+    </script>
+  </body>
+</html>
+
+<!-- Copy the content to index.html for better ease -->
